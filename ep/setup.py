@@ -176,7 +176,6 @@ if __name__ == "__main__":
             print("EFA detected, building with EFA support")
         else:
             print("EFA not detected, building without EFA")
-
         # Architecture Detection
         arch = os.uname().machine
         cpu_is_arm64 = arch == "aarch64"
@@ -233,7 +232,7 @@ if __name__ == "__main__":
             include_dirs.append(Path(efa_home) / "include")
             library_dirs.append(Path(efa_home) / "lib")
             libraries.append("efa")
-
+        
         # DMA-BUF registration avoids nvidia_peermem/efa_nv_peermem.
         # Set USE_DMABUF=1 to compile with this path.
         use_dmabuf = int(os.getenv("USE_DMABUF", "0"))
